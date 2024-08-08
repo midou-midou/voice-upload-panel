@@ -11,17 +11,15 @@ onMounted(() => {
 <template>
   <div :class="`btn-default btn-shadow ${props.vup}`" ref="voiceBtnRef">
     {{ props.desc[$i18n.locale] }}
-    <control-container />
+    <control-button />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .btn-default {
-  // font-weight: 500;
   border-radius: 1rem;
   padding: .7rem 1rem;
   margin: 0 1.2rem 1rem 0;
-  // overflow: hidden;
   background-color: var(--background-color);
 }
 

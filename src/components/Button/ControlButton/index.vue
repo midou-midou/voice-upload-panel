@@ -1,7 +1,7 @@
 <template>
   <div class="control-container">
-    <div class="delete-btn">Delete</div>
-    <div class="edit-btn">Edit</div>
+    <div class="delete-btn"><i class="iconfont">&#xe610;</i></div>
+    <div class="edit-btn"><i class="iconfont">&#xe600;</i></div>
   </div>
 </template>
 <script setup lang="ts">
@@ -10,15 +10,24 @@
 <style lang="scss">
 .control-container{
   display: inline-block;
-  padding: .7rem 1rem;
+  vertical-align: middle;
 
+  & > div{
+    display: inline-block;
+    outline: .3rem solid;
+    border-radius: .9rem;
+  }
 
   .delete-btn{
     background-color: red;
+    outline-color: red;
+    margin-left: .5rem;
+    margin-right: .8rem;
   }
 
   .edit-btn{
     background-color: orange;
+    outline-color: orange;
   }
 }
 </style>

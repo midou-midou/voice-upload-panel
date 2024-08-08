@@ -9,12 +9,7 @@ export function useDragVoice(el: Ref<HTMLElement | undefined>, voiceData: Voice)
   dom.ondragover = (e) => e.preventDefault()
   
   dom.ondragstart = (e) => {
-    for (const clfy of voiceStore.allVoice!) {
-      clfy.voice.map((v, k) => {
-        if (v.id === voiceData.id) 
-          voiceStore.dragingVocie = {...v, index: k, clfyId: clfy.clfy.id}
-      })
-    }
+    voiceStore.dragingVocie = voiceData.id
     // Object.assign(voiceStore.dragingVocie!, voiceData)
     // 去掉按钮阴影
     let dragedDom = e.target as HTMLElement
@@ -23,7 +18,7 @@ export function useDragVoice(el: Ref<HTMLElement | undefined>, voiceData: Voice)
   }
   
   dom.ondragenter = (e) => {
-    if (voiceData.id === voiceStore.dragingVocie?.id) return
+    if (voiceData.id === voiceStore.dragingVocie) return
     for (const clfy of voiceStore.allVoice!) {
       clfy.voice.map((v, k) => {
         if (v.id === voiceData.id) voiceStore.insertedVoice = {...v, index: k, clfyId: clfy.clfy.id}
@@ -32,16 +27,24 @@ export function useDragVoice(el: Ref<HTMLElement | undefined>, voiceData: Voice)
   }
 
   dom.ondragend = (e) => {
+    let dragVoice: Voice = {id: '', desc: {zh: '', en: '', jp: ''}, creator: '', path: '', vup: ''}
     for (const clfy of voiceStore.allVoice!) {
-      if (clfy.clfy.id === voiceStore.dragingVocie?.clfyId) {
-        clfy.voice.splice(voiceStore.dragingVocie.index as number, 1)
+      for (let index = 0;  index < clfy.voice.length; index++) {
+        if (clfy.voice[index].id === voiceStore.dragingVocie){ 
+          dragVoice = clfy.voice[index]
+          clfy.voice.splice(index, 1)
+        }
       }
+    }
+
+    for (const clfy of voiceStore.allVoice!) {
       if (clfy.clfy.id === voiceStore.insertedVoice?.clfyId) {
-        clfy.voice.splice(voiceStore.insertedVoice.index as number, 0, {
-          id: voiceStore.dragingVocie?.id!,
-          desc: voiceStore.dragingVocie?.desc!,
-          creator: voiceStore.dragingVocie?.creator!,
-          vup: voiceStore.dragingVocie?.vup!,
+        clfy.voice.splice(voiceStore.insertedVoice.index!, 0, {
+          id: dragVoice?.id!,
+          desc: dragVoice?.desc!,
+          creator: dragVoice?.creator!,
+          path: dragVoice?.path!,
+          vup: dragVoice?.vup!,
         })
       }
     }
