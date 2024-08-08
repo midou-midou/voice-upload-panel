@@ -1,42 +1,62 @@
-const siteConfig = {
-  title: '虚研社按钮上传站',
+import i18n from "../locale"
+
+const t = i18n.global.t
+
+type siteOption = {
+  title: string,
+  panel: {
+    displayPanel: string
+  }
+  vups: {
+    [k in string]: {
+      uid: string,
+      name: string,
+      color: string
+    }
+  },
+  footer: {
+    webSiteDeclare: string,
+    beianInfo: string
+  }
+}
+
+const siteConfig: siteOption = {
+  title: t('siteConfig.title'),
 
   panel: {
-    HistoryPanel: '上传历史记录',
-    DisplayPanel: '所有音声展示',
-    UploadPanel: '上传音声区'
+    displayPanel: t('siteConfig.panel.title'),
   },
 
   vups: {
     xiaoxi: {
       uid: '5563350',
-      name: { zh: '小希', en: '', jp: 'Xiaoxi' },
+      name: t('siteConfig.xiaoxi.name'),
       color: '#CD3951',
     },
     xiaotao: {
       uid: '1084222017',
-      name: { zh: '小桃', en: '', jp: 'Xiaotao' },
+      name: t('siteConfig.xiaotao.name'),
       color: '#DCCAE8',
     },
     xiaorou: {
       uid: '1734978373',
-      name: { zh: '小柔', en: '', jp: 'Xiaorou' },
+      name: t('siteConfig.xiaorou.name'),
       color: '#89dedb',
     },
     reine: {
       uid: '698029620',
-      name: { zh: '兰音', en: '', jp: 'Reine' },
+      name: t('siteConfig.reine.name'),
       color: '#a272f4',
     },
     ailurus: {
       uid: '1501380958',
-      name: { zh: '艾露露', en: '', jp: 'Ailurus' },
+      name: t('siteConfig.ailurus.name'),
       color: '#fdc888',
     }
   },
 
   footer: {
-    webSiteDeclare: '本网站为粉丝行为，与虚研社官方无任何关联',
+    webSiteDeclare: t('siteConfig.footer.declare'),
     beianInfo: '',
   }
 }

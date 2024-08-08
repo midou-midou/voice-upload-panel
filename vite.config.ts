@@ -3,6 +3,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import vue from '@vitejs/plugin-vue'
 
+// .vue文件中不需要手动引入vue api及vue route相关api，如果需要配置可以在下面添加
 const baseConfig = {
   plugins: [
     vue(),
@@ -15,15 +16,11 @@ const baseConfig = {
       imports: [
         'vue',
         'vue-router',
-        {
-          'axios': [
-            ['default', 'axios'],
-          ],
-        },
       ],
       defaultExportByFilename: false,
       dirs: [
-        'src/store/*'
+        'src/store/*',
+        'src/hooks/*'
       ],
       dts: './auto-imports.d.ts',
       vueTemplate: false,
@@ -47,6 +44,20 @@ export default defineConfig(({ mode }) => {
   if (mode === 'development') {
     return {
       ...baseConfig,
+      server: {
+        proxy: {
+          '/dev': {
+            target: 'http://localhost:8081',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/dev/, ''),
+          },
+          '/cos': {
+            target: 'https://xysbtn-1257227807.cos.ap-chengdu.myqcloud.com',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/dev/, ''),
+          },
+        }
+      }
     }
   }
   return {

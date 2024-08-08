@@ -1,6 +1,16 @@
 import { createApp } from 'vue'
-import './assets/style.less'
-import './assets/var.less'
+import { router } from "./route"
+import './assets/style.scss'
+import './assets/var.scss'
 import App from './App.vue'
+import i18n from './locale'
 
-createApp(App).mount('#app')
+let plugins = [router, i18n, store]
+
+const app = createApp(App)
+
+plugins.map((plugin) => {
+  app.use(plugin)
+})
+
+app.mount('#app')

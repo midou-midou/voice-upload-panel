@@ -45,10 +45,7 @@ table {
 	font-size: 16px;
 	font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif;
 }
-.btn-default{
-	font-weight: 500;
-	border-radius: 30px;
-	padding: 12px 32px;
-	overflow: hidden;
-	box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
+.font-shadow{
+	text-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
 }
+

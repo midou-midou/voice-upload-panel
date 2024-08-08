@@ -2,20 +2,22 @@
   <header class="header-container">
     <!-- 上传站标题 -->
     <div class="header-button-container">
-      <div class="header-button btn-default">{{siteConfig.title}}</div>
+      <div class="header-button font-shadow">{{siteConfig.title}}</div>
     </div>
     <!-- 小希小桃像素画部分 -->
     <div class="header-xitao-container">
       
     </div>
+    <switch-vup-btn></switch-vup-btn>
   </header>
   <section class="base-layout-container">
-    <DisplayPanel />
+    <router-view />
+    <control-panel />
   </section>
   <footer>
     <div class="footer-container">
       <span class="footer-declare">{{siteConfig.footer.webSiteDeclare}}</span>
-      <span class="footer-website-info">Power By Vue3 + Vite</span>
+      <span class="footer-website-info">Power by Vue3</span>
       <span class="footer-beian">{{siteConfig.footer.beianInfo}}</span>
     </div>
   </footer>
@@ -23,9 +25,6 @@
 
 <script setup lang="ts">
 import siteConfig from '../configs/site.config';
-import DisplayPanel from '../views/display/DisplayPanel.vue';
-
-
 
 </script>
 
@@ -35,6 +34,8 @@ import DisplayPanel from '../views/display/DisplayPanel.vue';
   }
 
   .header-container{
+    display: flex;
+    align-items: center;
     padding: 1rem 1rem 0 1rem;
 
     .header-button-container{
@@ -42,9 +43,16 @@ import DisplayPanel from '../views/display/DisplayPanel.vue';
       color: #fff;
       display: inline-block;
       .header-button{
-        background-color: #FF4C60;
-        
+        // color: #FF4C60;
+        font-size: 1.5rem;
+        font-weight: 450;
+        padding: .5rem;
+        color: #282642; 
       }
+    }
+
+    & :deep(div:nth-child(3)){
+      margin-left: auto;
     }
   }
 
@@ -55,6 +63,8 @@ import DisplayPanel from '../views/display/DisplayPanel.vue';
 
     &>span{
       display: block;
+      color: #282642;
+      text-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
     }
   }
 </style>
