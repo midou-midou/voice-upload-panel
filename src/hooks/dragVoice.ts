@@ -17,7 +17,7 @@ export function useDragVoice(el: Ref<HTMLElement | undefined>, voiceData: Voice)
     dragedDom.classList.remove('btn-shadow')
   }
   
-  dom.ondragenter = (e) => {
+  dom.ondragenter = () => {
     if (voiceData.id === voiceStore.dragingVocieId) return
     for (const clfy of voiceStore.allVoice!) {
       clfy.voice.map((v, k) => {
@@ -26,7 +26,7 @@ export function useDragVoice(el: Ref<HTMLElement | undefined>, voiceData: Voice)
     }
   }
 
-  dom.ondragend = (e) => {
+  dom.ondragend = (e: DragEvent) => {
     let dragVoice: Voice = {id: '', desc: JSON.stringify({zh: '', en: '', jp: ''}), creator: '', path: '', vup: ''}
     for (const clfy of voiceStore.allVoice!) {
       for (let index = 0;  index < clfy.voice.length; index++) {
@@ -42,10 +42,14 @@ export function useDragVoice(el: Ref<HTMLElement | undefined>, voiceData: Voice)
         clfy.voice.splice(voiceStore.insertedVoice.index!, 0, dragVoice)
       }
     }
-    
-    let dragedDom = e.target as HTMLElement
+
+    let dragedDom = e.target! as HTMLElement
     dragedDom.classList.remove('btn-drag')
     dragedDom.classList.add('btn-shadow')
   }
 
+  dom.ondrop = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
 }

@@ -9,12 +9,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-const props = defineProps({
-  title: String
-})
-</script>
-
 <style lang="scss" scoped>
   .panel-container{
     border-radius: 1rem;

@@ -23,7 +23,7 @@ watchEffect(async () => {
         {{ JSON.parse(clfyVoice.clfy.desc)[$i18n.locale] }}
       </template>
       <template #body>
-        <div class="panel-part">
+        <div class="panel-part" @dragover="e => e.preventDefault()" @drop="() => {}">
           <template v-for="(one, index) in clfyVoice.voice" :key="one.id">
             <transition-group name="list">
               <VoiceButton v-bind="one"/>
