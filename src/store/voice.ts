@@ -3,7 +3,7 @@ import type { PanelVoice, Voice } from "../types/voice";
 import { listVupVoice } from "../api";
 
 export const useVoiceStore = defineStore('voice', () => {
-  const dragingVocie = ref('')
+  const dragingVocieId = ref('')
   const insertedVoice = ref<Voice>()
   const allVoice = ref<PanelVoice[]>()
 
@@ -13,6 +13,6 @@ export const useVoiceStore = defineStore('voice', () => {
   }
 
   return {
-    dragingVocie, allVoice, getVupVoice, insertedVoice
+    dragingVocieId, allVoice, getVupVoice, insertedVoice
   }
 })

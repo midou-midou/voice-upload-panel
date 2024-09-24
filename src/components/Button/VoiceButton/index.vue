@@ -10,7 +10,7 @@ onMounted(() => {
 
 <template>
   <div :class="`btn-default btn-shadow ${props.vup}`" ref="voiceBtnRef">
-    {{ props.desc[$i18n.locale] }}
+    {{ JSON.parse(props.desc)[$i18n.locale] }}
     <control-button />
   </div>
 </template>

@@ -1,7 +1,6 @@
 <template>
   <div class="control-container">
-    <div class="delete-btn"><i class="iconfont">&#xe610;</i></div>
-    <div class="edit-btn"><i class="iconfont">&#xe600;</i></div>
+    <div class="delete-btn"><i class="iconfont">&#xe600;</i></div>
   </div>
 </template>
 <script setup lang="ts">
@@ -25,9 +24,5 @@
     margin-right: .8rem;
   }
 
-  .edit-btn{
-    background-color: orange;
-    outline-color: orange;
-  }
 }
 </style>

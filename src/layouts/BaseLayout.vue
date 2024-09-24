@@ -12,7 +12,7 @@
   </header>
   <section class="base-layout-container">
     <router-view />
-    <control-panel />
+    <!-- <control-panel /> -->
   </section>
   <footer>
     <div class="footer-container">

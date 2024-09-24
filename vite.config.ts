@@ -47,15 +47,10 @@ export default defineConfig(({ mode }) => {
       server: {
         proxy: {
           '/dev': {
-            target: 'http://localhost:8081',
+            target: 'http://localhost:3000',
             changeOrigin: true,
             rewrite: (path) => path.replace(/^\/dev/, ''),
-          },
-          '/cos': {
-            target: 'https://xysbtn-1257227807.cos.ap-chengdu.myqcloud.com',
-            changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/dev/, ''),
-          },
+          }
         }
       }
     }

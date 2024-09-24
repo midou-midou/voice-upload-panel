@@ -14,7 +14,7 @@ export type PanelVoice = {
   clfy: {
     id: string,
     creator: string,
-    desc: localeDesc
+    desc: string
   }
   voice: Voice[]
 }
@@ -23,7 +23,7 @@ export type Voice = {
   index?: number
   id: string
   clfyId?: string
-  desc: localeDesc
+  desc: string
   vup: Vup
   creator: string
   path: string

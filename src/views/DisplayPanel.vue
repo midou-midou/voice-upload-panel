@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import siteConfig from '../configs/site.config'
+import VoicePanelLayout from '../layouts/VoicePanelLayout.vue';
 // import { useI18n } from 'vue-i18n';
 import { PanelVoice } from '../types/voice';
 
@@ -16,20 +17,22 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <Panel :title="siteConfig.panel.displayPanel">
-    <template #body>
-      <template v-for="(clfyVoice, index) in voiceData" :key="index">
-        <div class="panel-part-title">{{ clfyVoice.clfy.desc[$i18n.locale] }}</div>
+  <template v-for="(clfyVoice, index) in voiceData" :key="index">
+    <voice-panel-layout :title="siteConfig.panel.displayPanel">
+      <template #title>
+        {{ JSON.parse(clfyVoice.clfy.desc)[$i18n.locale] }}
+      </template>
+      <template #body>
         <div class="panel-part">
           <template v-for="(one, index) in clfyVoice.voice" :key="one.id">
-              <transition-group name="list">
-                <VoiceButton v-bind="one"/>
-              </transition-group>
-            </template>
-          </div>
-        </template>
-    </template>
-  </Panel>
+            <transition-group name="list">
+              <VoiceButton v-bind="one"/>
+            </transition-group>
+          </template>
+        </div>
+      </template>
+    </voice-panel-layout>
+  </template>
 </template>
 
 <style scoped lang="scss">
