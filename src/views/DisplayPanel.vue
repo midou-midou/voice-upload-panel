@@ -24,11 +24,11 @@ watchEffect(async () => {
       </template>
       <template #body>
         <div class="panel-part" @dragover="e => e.preventDefault()" @drop="() => {}">
-          <template v-for="(one, index) in clfyVoice.voice" :key="one.id">
-            <transition-group name="list">
-              <VoiceButton v-bind="one"/>
-            </transition-group>
-          </template>
+          <transition-group name="list">
+            <template v-for="(one, index) in clfyVoice.voice" :key="one.id">
+              <VoiceButton v-bind="one" :vup="currentRoute.name" />
+            </template>
+          </transition-group>
         </div>
       </template>
     </voice-panel-layout>

@@ -1,17 +1,22 @@
 :root{
   --background-color: #e0e5ec;
   --panel-background-color: #fff;
-  
+
+
   --xiaoxi-color: #CD3951;
   --xiaotao-color: #f2cefc;
   --xiaorou-color: #89dedb;
   --reine-color: #a272f4;
   --ailurus-color: #f4bb84;
   --yangbao-color: #696969;
+
+  --btn-font-color: #fff;
 }
 
-// $vupName: ;
 
-// #{$vupName} {
-//   background-color: $vupName;
-// }
+@each $vup in xiaoxi, xiaotao, xiaorou, reine, ailurus {
+  .#{$vup} {
+    background-color: var(#{"--"+$vup+"-color"});
+  }
+
+}

@@ -24,7 +24,7 @@ export type Voice = {
   id: string
   clfyId?: string
   desc: string
-  vup: Vup
+  vup?: Vup
   creator: string
   path: string
 }

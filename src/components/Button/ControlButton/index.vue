@@ -16,7 +16,6 @@
     outline: .3rem solid;
     border-radius: .9rem;
   }
-
   .delete-btn{
     background-color: red;
     outline-color: red;

@@ -17,10 +17,10 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .btn-default {
-  border-radius: 1rem;
+  color: var(--btn-font-color);
+  border-radius: 1.3rem;
   padding: .7rem 1rem;
   margin: 0 1.2rem 1rem 0;
-  background-color: var(--background-color);
 }
 
 .btn-shadow {
