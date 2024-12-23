@@ -3,12 +3,14 @@ import siteConfig from '../configs/site.config'
 import VoicePanelLayout from '../layouts/VoicePanelLayout.vue';
 // import { useI18n } from 'vue-i18n';
 import { PanelVoice } from '../types/voice';
+import {useDragVoicePanel} from "../hooks/dragVoicePanel";
 
 const voiceData = ref<PanelVoice[]>([])
 const voiceStore = useVoiceStore()
 const currentRoute = useRoute()
+const panelPartRef = ref<HTMLElement[]>()
 
-watchEffect(async () => {
+ watchEffect(async () => {
   // TODO：缓存 参考serviceWorker
   await voiceStore.getVupVoice(currentRoute.name as string)
   voiceData.value = voiceStore.allVoice!
@@ -18,19 +20,17 @@ watchEffect(async () => {
 
 <template>
   <template v-for="(clfyVoice, index) in voiceData" :key="index">
-    <voice-panel-layout :title="siteConfig.panel.displayPanel">
+    <voice-panel-layout :title="siteConfig.panel.displayPanel" @mountHook="() => useDragVoicePanel(panelPartRef[index])">
       <template #title>
         {{ JSON.parse(clfyVoice.clfy.desc)[$i18n.locale] }}
       </template>
-      <template #body>
-        <div class="panel-part" @dragover="e => e.preventDefault()" @drop="() => {}">
-          <transition-group name="list">
-            <template v-for="(one, index) in clfyVoice.voice" :key="one.id">
-              <VoiceButton v-bind="one" :vup="currentRoute.name" />
-            </template>
-          </transition-group>
-        </div>
-      </template>
+      <div ref="panelPartRef" class="panel-part">
+        <transition-group name="list">
+          <template v-for="(one, index) in clfyVoice.voice" :key="one.id">
+            <VoiceButton v-bind="one" :vup="currentRoute.name" />
+          </template>
+        </transition-group>
+      </div>
     </voice-panel-layout>
   </template>
 </template>

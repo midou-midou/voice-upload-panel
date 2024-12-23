@@ -4,10 +4,18 @@
       <slot name="title"></slot>
     </div>
     <div class="panel-body">
-      <slot name="body"></slot>
+      <slot name="default"></slot>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const emit = defineEmits()
+
+onMounted(() => {
+  emit('mountHook')
+})
+</script>
 
 <style lang="scss" scoped>
   .panel-container{

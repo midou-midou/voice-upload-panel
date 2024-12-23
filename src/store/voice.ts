@@ -13,6 +13,9 @@ export const useVoiceStore = defineStore('voice', () => {
   }
 
   return {
-    dragingVocieId, allVoice, getVupVoice, insertedVoice
+    dragingVocieId,
+    allVoice,
+    getVupVoice,
+    insertedVoice
   }
 })
