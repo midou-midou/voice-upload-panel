@@ -1,16 +1,20 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4647605 */
-  src: url('iconfont.woff2?t=1723098001300') format('woff2'),
-       url('iconfont.woff?t=1723098001300') format('woff'),
-       url('iconfont.ttf?t=1723098001300') format('truetype');
+  src: url('iconfont.woff2?t=1735973447914') format('woff2'),
+       url('iconfont.woff?t=1735973447914') format('woff'),
+       url('iconfont.ttf?t=1735973447914') format('truetype');
 }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 1.1rem;
+  font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shangchuan:before {
+  content: "\e672";
 }
 
 .icon-bianji:before {

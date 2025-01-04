@@ -3,8 +3,7 @@ import type { PanelVoice, Voice } from "../types/voice";
 import { listVupVoice } from "../api";
 
 export const useVoiceStore = defineStore('voice', () => {
-  const dragingVocieId = ref('')
-  const insertedVoice = ref<Voice>()
+  const draggingVocieId = ref('')
   const allVoice = ref<PanelVoice[]>()
 
   async function getVupVoice(vupName: string) {
@@ -13,9 +12,8 @@ export const useVoiceStore = defineStore('voice', () => {
   }
 
   return {
-    dragingVocieId,
+    dragingVocieId: draggingVocieId,
     allVoice,
-    getVupVoice,
-    insertedVoice
+    getVupVoice
   }
 })

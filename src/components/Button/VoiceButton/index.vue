@@ -15,7 +15,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .btn-default {
   color: var(--btn-font-color);
   border-radius: 1.3rem;

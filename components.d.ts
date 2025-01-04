@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SwitchVupBtn: typeof import('./src/components/Button/SwitchVupBtn/index.vue')['default']
+    UploadButton: typeof import('./src/components/Button/UploadButton/index.vue')['default']
     VoiceButton: typeof import('./src/components/Button/VoiceButton/index.vue')['default']
   }
 }

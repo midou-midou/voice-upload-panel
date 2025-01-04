@@ -20,7 +20,7 @@ const panelPartRef = ref<HTMLElement[]>()
 
 <template>
   <template v-for="(clfyVoice, index) in voiceData" :key="index">
-    <voice-panel-layout :title="siteConfig.panel.displayPanel" @mountHook="() => useDragVoicePanel(panelPartRef[index])">
+    <voice-panel-layout :title="siteConfig.panel.displayPanel" @mountHook="() => useDragVoicePanel(panelPartRef[index], clfyVoice.clfy.id)">
       <template #title>
         {{ JSON.parse(clfyVoice.clfy.desc)[$i18n.locale] }}
       </template>
@@ -30,6 +30,7 @@ const panelPartRef = ref<HTMLElement[]>()
             <VoiceButton v-bind="one" :vup="currentRoute.name" />
           </template>
         </transition-group>
+        <UploadButton :vup="currentRoute.name"/>
       </div>
     </voice-panel-layout>
   </template>
@@ -42,16 +43,17 @@ const panelPartRef = ref<HTMLElement[]>()
 .panel-part{
   display: flex;
   flex-wrap: wrap;
-
-  // &::last-line{
-  //   .btn-default{
-  //     margin: 0 1.2rem 0 0;
-  //   }
-  // }
-  
+  min-height: 2.5rem;
 }
 
-.list-move{
+.list-move,
+.list-enter-active,
+.list-leave-active {
   transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
 }
 </style>
