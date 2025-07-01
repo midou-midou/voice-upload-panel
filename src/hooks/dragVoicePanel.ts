@@ -1,4 +1,4 @@
-export function useDragVoicePanel(el: Ref<HTMLElement>, panelId: string) {
+export function useDragVoicePanel(el: Ref<HTMLElement>, panelId: string, panelDropFinish: Function) {
     const dom = unref(el)
     dom.draggable = false
     const voiceStore = useVoiceStore()
@@ -39,6 +39,9 @@ export function useDragVoicePanel(el: Ref<HTMLElement>, panelId: string) {
                 clfy.voice.push(dragVoice)
             }
         }
+
+        // 回调
+        panelDropFinish()
     }
 
 }

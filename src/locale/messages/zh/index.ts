@@ -6,7 +6,9 @@ const zh = {
   'siteConfig.ailurus.name': '艾露露',
   'siteConfig.title': '虚研社按钮上传站',
   'siteConfig.panel.title': '所有音声展示',
-  'siteConfig.footer.declare': '本网站为粉丝行为，与虚研社官方无任何关联'
+  'siteConfig.footer.declare': '本网站为粉丝行为，与虚研社官方无任何关联',
+
+  'popup.upload.model.title': '输入当前上传的音声的名字'
 }
 
 export default zh

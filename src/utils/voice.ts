@@ -1,6 +1,16 @@
-import { useI18n } from "vue-i18n"
+import { Component, VNode } from "vue"
+import i18n from "../locale"
 
-// export const useVoiceMessage = (message: formatMessage) => {
-//   const {locale} = useI18n()
-  
-// }
+export const voiceDescGetName = (descJson: string) => {
+  const locale = unref(i18n.global.locale)
+  return JSON.parse(descJson)[locale] ?? 'unknow-voice'
+}
+
+export const isShowControlButton = (componentVnode: VNode, creator: string) => {
+  return defineComponent({
+    setup() {
+      const siteStore = useSiteStore()
+      return () => unref(siteStore.user) === creator ? componentVnode : null
+    }
+  })
+}

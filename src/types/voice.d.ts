@@ -1,13 +1,7 @@
-import siteConfig from "../configs/site.config"
-import messages from "../locale/messages"
+import { UploadVoiceStatus } from "./enmu"
 
-declare global {
-  type localeDesc = Record<keyof typeof messages, string> & {[k: string]: string}
-  type locale = keyof typeof messages
-  type Vup = keyof typeof siteConfig.vups
-  interface vupVoice {
-    [k: string]: PanelVoice[]
-  }
+export interface vupVoice {
+  [k: string]: PanelVoice[]
 }
 
 export type PanelVoice = {
@@ -19,17 +13,22 @@ export type PanelVoice = {
   voice: Voice[]
 }
 
+export interface UploadVoice extends Voice{
+  status?: UploadVoiceStatus
+  uploadFile: File
+}
+
 export type Voice = {
   index?: number
-  id: string
+  id?: string
   clfyId?: string
   desc: string
-  vup?: Vup
+  vup?: string
   creator: string
   path: string
 }
 
-export interface SiteConfig{
+export interface SiteConfig {
   title: string
   panel: {
     [k: string]: string

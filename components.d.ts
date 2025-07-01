@@ -9,12 +9,12 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ClfyButton: typeof import('./src/components/Button/ClfyButton/index.vue')['default']
     ControlButton: typeof import('./src/components/Button/ControlButton/index.vue')['default']
     Notification: typeof import('./src/components/Notification/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SwitchVupBtn: typeof import('./src/components/Button/SwitchVupBtn/index.vue')['default']
-    UploadButton: typeof import('./src/components/Button/UploadButton/index.vue')['default']
     VoiceButton: typeof import('./src/components/Button/VoiceButton/index.vue')['default']
   }
 }

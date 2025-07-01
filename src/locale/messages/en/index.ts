@@ -6,6 +6,7 @@ export default {
   'siteConfig.ailurus.name': 'ailurus',
   'siteConfig.title': '',
   'siteConfig.panel.title': '',
-  'siteConfig.footer.declare': ''
-  
+  'siteConfig.footer.declare': '',
+  'popup.upload.model.title': '输入当前上传音声的名字'
+
 }

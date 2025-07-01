@@ -31,11 +31,16 @@ const baseConfig = {
     }),
     Components({
       dirs: [
-        'src/components/**/*',
+        'src/components/Button/*',
+        'src/components/Notification/*',
         'src/layouts/*',
         'src/views/**/*'
+      ],
+      // 自定义组件重新命名后要排除，或者得写resolver
+      exclude: [
+        'src/components/Upload/**/*'
       ]
-    })    
+    })
   ],
 }
 

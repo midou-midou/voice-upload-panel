@@ -6,7 +6,8 @@ const jp = {
   'siteConfig.ailurus.name': 'ailurus',
   'siteConfig.title': '',
   'siteConfig.panel.title': '',
-  'siteConfig.footer.declare': ''
+  'siteConfig.footer.declare': '',
+  'popup.upload.model.title': ''
 }
 
 export default jp

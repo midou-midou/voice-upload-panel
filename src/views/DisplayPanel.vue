@@ -2,8 +2,9 @@
 import siteConfig from '../configs/site.config'
 import VoicePanelLayout from '../layouts/VoicePanelLayout.vue';
 // import { useI18n } from 'vue-i18n';
-import { PanelVoice } from '../types/voice';
 import {useDragVoicePanel} from "../hooks/dragVoicePanel";
+import UploadLayout from '../layouts/UploadLayout.vue';
+import { PanelVoice } from '../types/voice';
 
 const voiceData = ref<PanelVoice[]>([])
 const voiceStore = useVoiceStore()
@@ -20,7 +21,7 @@ const panelPartRef = ref<HTMLElement[]>()
 
 <template>
   <template v-for="(clfyVoice, index) in voiceData" :key="index">
-    <voice-panel-layout :title="siteConfig.panel.displayPanel" @mountHook="() => useDragVoicePanel(panelPartRef[index], clfyVoice.clfy.id)">
+    <voice-panel-layout :title="siteConfig.panel.displayPanel" @mountHook="() => useDragVoicePanel(panelPartRef[index], clfyVoice.clfy.id, () => {})">
       <template #title>
         {{ JSON.parse(clfyVoice.clfy.desc)[$i18n.locale] }}
       </template>
@@ -30,7 +31,7 @@ const panelPartRef = ref<HTMLElement[]>()
             <VoiceButton v-bind="one" :vup="currentRoute.name" />
           </template>
         </transition-group>
-        <UploadButton :vup="currentRoute.name"/>
+        <UploadLayout :clfyId="clfyVoice.clfy.id"/>
       </div>
     </voice-panel-layout>
   </template>
