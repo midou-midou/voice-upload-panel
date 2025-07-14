@@ -4,9 +4,6 @@ const t = i18n.global.t
 
 type siteOption = {
   title: string,
-  panel: {
-    displayPanel: string
-  }
   vups: {
     [k in string]: {
       uid: string,
@@ -22,10 +19,6 @@ type siteOption = {
 
 const siteConfig: siteOption = {
   title: t('siteConfig.title'),
-
-  panel: {
-    displayPanel: t('siteConfig.panel.title'),
-  },
 
   vups: {
     xiaoxi: {

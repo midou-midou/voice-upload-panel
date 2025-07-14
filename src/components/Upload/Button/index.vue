@@ -2,10 +2,10 @@
 import i18n from '../../../locale';
 import { UploadVoiceStatus } from '../../../types/enmu';
 import type { UploadVoice } from '../../../types/voice';
-import Popup from '../../Popup/popup';
+import Popup from '../../Popup';
 import InputPopup from '../../Popup/types/input.vue';
 
-
+const site = useSiteStore()
 defineOptions({
   name: 'UploadButton'
 })
@@ -22,11 +22,9 @@ const emit = defineEmits<{
   changeUploadList: [uploadList: UploadVoice[]]
 }>()
 
-const inputUploadRef = ref()
-// const uploadFileName = ref('')
 
-const uploadHandler = () => {
-  let fileList = inputUploadRef.value.files
+const uploadHandler = (e: any) => {
+  let fileList = e.target.files
   if (fileList.length === 0) {
     return
   }
@@ -46,6 +44,7 @@ const uploadHandler = () => {
           uploadFileName = val
         },
         'onInputEnter': () => {
+          if (!site.user) return
           emit('changeUploadList', [{
             desc: JSON.stringify({
               zh: uploadFileName,
@@ -54,7 +53,7 @@ const uploadHandler = () => {
             }),
             clfyId: props.clfyId,
             path: file.name,
-            creator: 'midou',
+            creator: site.user,
             vup: props.vup,
             status: UploadVoiceStatus.uploading,
             uploadFile: file
@@ -68,9 +67,15 @@ const uploadHandler = () => {
 
 <template>
   <label class="upload-input-wrapper btn-default" :style="`outline: .1rem dashed var(--${props.vup}-color)`"
-    for="upload-btn">
-    <input ref="inputUploadRef" type="file" accept=".mp3" multiple="false" style="display: none;" id="upload-btn"
-      @change="uploadHandler">
+    :for="`upload-btn-${clfyId}`">
+    <input 
+      :id="`upload-btn-${clfyId}`"
+      type="file" 
+      accept=".mp3" 
+      multiple="false" 
+      style="display: none;" 
+      @change="uploadHandler"
+    >
     <i class="iconfont">&#xe672;</i>上传
   </label>
 </template>
@@ -81,5 +86,6 @@ const uploadHandler = () => {
   line-height: 1rem;
   color: var(--upload-btn-font-color);
   cursor: pointer;
+  outline-offset: -.1rem;
 }
 </style>

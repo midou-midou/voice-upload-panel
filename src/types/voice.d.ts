@@ -4,12 +4,14 @@ export interface vupVoice {
   [k: string]: PanelVoice[]
 }
 
+export type Clfy = {
+  id: string,
+  creator: string,
+  desc: string
+}
+
 export type PanelVoice = {
-  clfy: {
-    id: string,
-    creator: string,
-    desc: string
-  }
+  clfy: Clfy
   voice: Voice[]
 }
 

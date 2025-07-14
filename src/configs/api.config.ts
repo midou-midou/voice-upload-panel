@@ -9,6 +9,9 @@ export const Api = {
   admin: {
     listVupVoice: (ownerName: string):string => `/voice?owner=${ownerName}`,
     uploadVoices: '/upload',
-    deleteVoice: '/voice'
+    deleteVoice: '/voice',
+    createClfyName: '/clfy',
+    deleteClfy: '/clfy',
+    updateVoiceClfy: '/voice'
   }
 }

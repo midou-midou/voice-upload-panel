@@ -8,16 +8,16 @@ const props = defineProps({
   }
 })
 const currentRoute = useRoute()
-const vup = ref(currentRoute.name?.toString())
 
 const uploadFiles = ref<UploadVoice[]>([])
 const changeUploadList = (res: UploadVoice[]) => {
+  // console.log('changeuplodalist ', res);
   uploadFiles.value = [...res]
 }
 </script>
 <template>
-  <UploadList :uploadFiles="uploadFiles" :vup="vup"/>
-  <UploadButton :vup="vup" @changeUploadList="changeUploadList" :clfyId="props.clfyId"/>
+  <UploadList :uploadFiles="uploadFiles" :vup="currentRoute.name?.toString()"/>
+  <UploadButton :vup="currentRoute.name?.toString()" :clfyId="props.clfyId" @changeUploadList="changeUploadList" />
 </template>
 <style lang="scss">
 </style>

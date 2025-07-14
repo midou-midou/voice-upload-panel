@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
 
 export const useSiteStore = defineStore('site', () => {
-  const user = ref('')
+  const authKey = 'XYSBTN_UPLOAD_KEY'
+  const user = ref(localStorage.getItem(authKey))
 
   const setUser = (name: string) => {
-    // cookie
+    // db
+    localStorage.setItem(authKey, name)
 
     // store
     user.value = name

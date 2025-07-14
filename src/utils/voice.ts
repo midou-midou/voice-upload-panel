@@ -1,9 +1,9 @@
-import { Component, VNode } from "vue"
+import { VNode } from "vue"
 import i18n from "../locale"
 
-export const voiceDescGetName = (descJson: string) => {
+export const descGetLocale = (descJson: string) => {
   const locale = unref(i18n.global.locale)
-  return JSON.parse(descJson)[locale] ?? 'unknow-voice'
+  return JSON.parse(descJson)[locale] ?? 'unknow'
 }
 
 export const isShowControlButton = (componentVnode: VNode, creator: string) => {
@@ -13,4 +13,9 @@ export const isShowControlButton = (componentVnode: VNode, creator: string) => {
       return () => unref(siteStore.user) === creator ? componentVnode : null
     }
   })
+}
+
+export const getVupFromUrl = (): string => {
+  const path = location.pathname.split(/^\/(.*?)\??$/)[1]
+  return path
 }

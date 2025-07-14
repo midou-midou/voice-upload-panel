@@ -9,7 +9,8 @@ export function useDragVoice(el: Ref<HTMLElement | undefined>, voiceData: Voice)
   dom.ondragover = (e) => e.preventDefault()
   
   dom.ondragstart = (e) => {
-    voiceStore.dragingVocieId = voiceData.id
+    if (!voiceData.id) return
+    voiceStore.draggingVoiceId = voiceData.id
     // 去掉按钮阴影
     dom.classList.add('btn-drag')
     dom.classList.remove('btn-shadow')

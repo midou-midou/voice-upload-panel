@@ -17,3 +17,4 @@ plugins.map((plugin) => {
 })
 
 app.mount('#app')
+

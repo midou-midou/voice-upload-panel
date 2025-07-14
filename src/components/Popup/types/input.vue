@@ -5,7 +5,7 @@
   </div>
 </template>
 <script setup>
-import Popup from '../popup'
+import Popup from '..'
 
 // 下面创建的是一个customRef，不能直接监听
 const model = defineModel()
@@ -19,7 +19,7 @@ onMounted(() => {
 })
 
 const handleInputEnter = () => {
-  Popup.close(emit('inputEnter'))
+  Popup.close(emit('inputEnter', model.value))
 }
 </script>
 <style lang="scss" scoped>

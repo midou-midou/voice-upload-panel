@@ -1,15 +1,22 @@
 <script lang="ts" setup>
+import { deleteVoice } from '../../../api';
 import { Voice } from '../../../types/voice';
 import { isShowControlButton } from '../../../utils/voice';
-import ControlButton from '../ControlButton/index.vue'
+import DeleteButton from '../DeleteButton/index.vue'
 
 const props = defineProps<Voice>()
 const voiceBtnRef = ref<HTMLElement>()
 
-const WrapperControl = isShowControlButton(h(ControlButton, {voiceName: props.path}), props.creator)
+const WrapperControl = isShowControlButton(h(DeleteButton, {
+  onHandleDelete: () =>
+    deleteVoice(props.path).then(() => {
+      const voice = useVoiceStore()
+      voice.refreshVupVoice()
+    })
+}), props.creator)
 
 onMounted(() => {
-  useDragVoice(voiceBtnRef, props)
+  useDragVoice(voiceBtnRef, unref(props))
 })
 </script>
 

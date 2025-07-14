@@ -1,47 +1,43 @@
 <script lang="ts" setup>
-import siteConfig from '../configs/site.config'
 import VoicePanelLayout from '../layouts/VoicePanelLayout.vue';
-// import { useI18n } from 'vue-i18n';
-import {useDragVoicePanel} from "../hooks/dragVoicePanel";
 import UploadLayout from '../layouts/UploadLayout.vue';
-import { PanelVoice } from '../types/voice';
 
-const voiceData = ref<PanelVoice[]>([])
 const voiceStore = useVoiceStore()
 const currentRoute = useRoute()
-const panelPartRef = ref<HTMLElement[]>()
 
- watchEffect(async () => {
+watchEffect(async () => {
   // TODO：缓存 参考serviceWorker
   await voiceStore.getVupVoice(currentRoute.name as string)
-  voiceData.value = voiceStore.allVoice!
 })
 
 </script>
 
 <template>
-  <template v-for="(clfyVoice, index) in voiceData" :key="index">
-    <voice-panel-layout :title="siteConfig.panel.displayPanel" @mountHook="() => useDragVoicePanel(panelPartRef[index], clfyVoice.clfy.id, () => {})">
+  <template v-for="(clfyVoice, index) in voiceStore.allVoice" :key="index">
+    <voice-panel-layout :clfyId="clfyVoice.clfy.id">
       <template #title>
-        {{ JSON.parse(clfyVoice.clfy.desc)[$i18n.locale] }}
+        <clfy-title v-bind="clfyVoice.clfy"/>
       </template>
-      <div ref="panelPartRef" class="panel-part">
+      <div class="panel-part">
         <transition-group name="list">
           <template v-for="(one, index) in clfyVoice.voice" :key="one.id">
             <VoiceButton v-bind="one" :vup="currentRoute.name" />
           </template>
         </transition-group>
-        <UploadLayout :clfyId="clfyVoice.clfy.id"/>
+        <UploadLayout :clfyId="clfyVoice.clfy.id" />
       </div>
     </voice-panel-layout>
   </template>
+  <voice-panel-layout>
+    <template #title>
+      <clfy-button :vup="currentRoute.name"/>
+    </template>
+  </voice-panel-layout>
 </template>
 
 <style scoped lang="scss">
-.panel-part-title{
-  margin-bottom: .5rem;
-}
-.panel-part{
+.panel-part {
+  width: fit-content;
   display: flex;
   flex-wrap: wrap;
   min-height: 2.5rem;

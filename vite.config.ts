@@ -20,7 +20,7 @@ const baseConfig = {
       defaultExportByFilename: false,
       dirs: [
         'src/store/*',
-        'src/hooks/*'
+        'src/composables/*'
       ],
       dts: './auto-imports.d.ts',
       vueTemplate: false,

@@ -5,9 +5,10 @@ const jp = {
   'siteConfig.reine.name': 'reine',
   'siteConfig.ailurus.name': 'ailurus',
   'siteConfig.title': '',
-  'siteConfig.panel.title': '',
   'siteConfig.footer.declare': '',
-  'popup.upload.model.title': ''
+  'clfy.edit.title': '',
+  'popup.upload.model.title': '',
+  'popup.auth.model.title': ''
 }
 
 export default jp

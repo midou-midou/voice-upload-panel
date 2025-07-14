@@ -1,17 +1,11 @@
 <script setup lang="ts">
 import BaseLayout from "./layouts/BaseLayout.vue";
 import siteConfig from "./configs/site.config";
-import { login } from "./api";
+import useAuth from "./composables/auth";
 
 document.title = siteConfig.title
+useAuth()
 
-const siteStore = useSiteStore()
-
-onMounted(async () => {
-  const name = 'midou'
-  await login(name)
-  siteStore.setUser(name)
-})
 </script>
 
 <template>

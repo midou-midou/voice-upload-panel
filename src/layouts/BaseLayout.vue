@@ -11,12 +11,7 @@
     <switch-vup-btn></switch-vup-btn>
   </header>
   <section class="base-layout-container">
-    <router-view v-slot="{ Component }">
-      <transition name="fade">
-        <component :is="Component" />
-      </transition>
-    </router-view>
-    <!-- <control-panel /> -->
+    <router-view />
   </section>
   <footer>
     <div class="footer-container">

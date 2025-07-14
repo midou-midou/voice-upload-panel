@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
 import type { PanelVoice, Voice } from "../types/voice";
 import { listVupVoice } from "../api";
+import { getVupFromUrl } from "../utils/voice";
 
 export const useVoiceStore = defineStore('voice', () => {
-  const draggingVocieId = ref('')
+  const draggingVoiceId = ref('')
   const allVoice = ref<PanelVoice[]>()
 
   async function getVupVoice(vupName: string) {
@@ -11,9 +12,15 @@ export const useVoiceStore = defineStore('voice', () => {
     allVoice.value = [...result[vupName]]
   }
 
+  async function refreshVupVoice() {
+    const path = getVupFromUrl()
+    await getVupVoice(path ?? '')
+  }
+
   return {
-    dragingVocieId: draggingVocieId,
+    draggingVoiceId,
     allVoice,
-    getVupVoice
+    getVupVoice,
+    refreshVupVoice
   }
 })
