@@ -19,18 +19,18 @@ watchEffect(async () => {
         <clfy-title v-bind="clfyVoice.clfy"/>
       </template>
       <div class="panel-part">
-        <transition-group name="list">
-          <template v-for="(one, index) in clfyVoice.voice" :key="one.id">
-            <VoiceButton v-bind="one" :vup="currentRoute.name" />
-          </template>
-        </transition-group>
+        <template v-for="(one, index) in clfyVoice.voice" :key="one.id">
+          <VoiceButton v-bind="one" :vup="currentRoute.name?.toString()" />
+        </template>
+        <!-- <transition-group name="list">
+        </transition-group> -->
         <UploadLayout :clfyId="clfyVoice.clfy.id" />
       </div>
     </voice-panel-layout>
   </template>
   <voice-panel-layout>
     <template #title>
-      <clfy-button :vup="currentRoute.name"/>
+      <clfy-button :vup="currentRoute.name?.toString()"/>
     </template>
   </voice-panel-layout>
 </template>
@@ -40,17 +40,18 @@ watchEffect(async () => {
   width: fit-content;
   display: flex;
   flex-wrap: wrap;
-  min-height: 2.5rem;
+  // min-height: 2.5rem;
+  gap: 1.2rem 1rem;
 }
 
-.list-move,
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
-}
+// .list-move,
+// .list-enter-active,
+// .list-leave-active {
+//   transition: all 0.5s ease;
+// }
 
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-}
+// .list-enter-from,
+// .list-leave-to {
+//   opacity: 0;
+// }
 </style>

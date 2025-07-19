@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import i18n from '../../../locale';
-import { UploadVoiceStatus } from '../../../types/enmu';
 import type { UploadVoice } from '../../../types/voice';
 import Popup from '../../Popup';
 import InputPopup from '../../Popup/types/input.vue';
@@ -55,7 +54,6 @@ const uploadHandler = (e: any) => {
             path: file.name,
             creator: site.user,
             vup: props.vup,
-            status: UploadVoiceStatus.uploading,
             uploadFile: file
           }])
         }

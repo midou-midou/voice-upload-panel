@@ -20,7 +20,7 @@ const props = defineProps({
 })
 const panelPartRef = ref()
 
-onMounted(() => {
+watchEffect(() => {
   panelPartRef && useDragVoicePanel(
     panelPartRef,
     props.clfyId,
@@ -37,7 +37,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .panel-container {
   border-radius: 1rem;
-  margin: 1rem 3rem 0 3rem;
+  padding: 1rem 3rem 0 3rem;
   // background: var(--panel-background-color);
   box-shadow: -7px -7px 20px 0px #fff9,
     -4px -4px 5px 0px #fff9,
@@ -51,7 +51,7 @@ onMounted(() => {
     font-size: 1.1rem;
     font-weight: 450;
     padding: 0 .5rem;
-    color: #282642;
+    color: var(--panel-title-color);
     text-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
   }
 

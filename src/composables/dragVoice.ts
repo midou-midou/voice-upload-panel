@@ -7,7 +7,7 @@ export function useDragVoice(el: Ref<HTMLElement | undefined>, voiceData: Voice)
   dom.draggable = true
 
   dom.ondragover = (e) => e.preventDefault()
-  
+
   dom.ondragstart = (e) => {
     if (!voiceData.id) return
     voiceStore.draggingVoiceId = voiceData.id
@@ -24,6 +24,5 @@ export function useDragVoice(el: Ref<HTMLElement | undefined>, voiceData: Voice)
 
   dom.ondrop = (e) => {
     e.preventDefault()
-    e.stopPropagation()
   }
 }

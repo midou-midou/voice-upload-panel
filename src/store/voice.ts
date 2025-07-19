@@ -4,6 +4,7 @@ import { listVupVoice } from "../api";
 import { getVupFromUrl } from "../utils/voice";
 
 export const useVoiceStore = defineStore('voice', () => {
+  const uploadProgress = ref()
   const draggingVoiceId = ref('')
   const allVoice = ref<PanelVoice[]>()
 
@@ -17,10 +18,16 @@ export const useVoiceStore = defineStore('voice', () => {
     await getVupVoice(path ?? '')
   }
 
+  function clearDragging() {
+    draggingVoiceId.value = ''
+  }
+
   return {
     draggingVoiceId,
     allVoice,
     getVupVoice,
-    refreshVupVoice
+    refreshVupVoice,
+    clearDragging,
+    uploadProgress
   }
 })

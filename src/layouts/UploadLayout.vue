@@ -11,13 +11,21 @@ const currentRoute = useRoute()
 
 const uploadFiles = ref<UploadVoice[]>([])
 const changeUploadList = (res: UploadVoice[]) => {
-  // console.log('changeuplodalist ', res);
   uploadFiles.value = [...res]
+}
+const clearUploadList = () => {
+  uploadFiles.value = []
 }
 </script>
 <template>
-  <UploadList :uploadFiles="uploadFiles" :vup="currentRoute.name?.toString()"/>
-  <UploadButton :vup="currentRoute.name?.toString()" :clfyId="props.clfyId" @changeUploadList="changeUploadList" />
+  <UploadList 
+    :uploadFiles="uploadFiles" 
+    :vup="currentRoute.name?.toString()" 
+    @clearUploadList="clearUploadList"
+  />
+  <UploadButton 
+    :vup="currentRoute.name?.toString()" 
+    :clfyId="props.clfyId" 
+    @changeUploadList="changeUploadList" 
+  />
 </template>
-<style lang="scss">
-</style>

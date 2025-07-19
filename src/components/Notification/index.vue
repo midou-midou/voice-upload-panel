@@ -11,7 +11,7 @@ import Notafication from './index';
 
 const props = defineProps<NotaficationInstanceArgs>()
 const processColor = `var(--${getVupFromUrl()}-color)`
-const notifyAnimationDuration = '2s'
+const notifyAnimationDuration = '1s'
 const notifyOutDelay = `${parseFloat(props.NotafyTime) + parseFloat(notifyAnimationDuration)}s`
 
 let runTimeout: number = 0

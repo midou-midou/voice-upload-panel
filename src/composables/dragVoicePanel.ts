@@ -3,22 +3,29 @@ export function useDragVoicePanel(el: Ref<HTMLElement>, panelId: string, panelDr
   if (!dom) return
   dom.draggable = false
   const voiceStore = useVoiceStore()
-
+  
   dom.ondragenter = (e) => {
+    const {x, y, width, height} = dom.getBoundingClientRect()
     // 添加拖拽按钮进入后panel的效果
-    dom.classList.add('dragged-panel')
+    if (e.x > x && e.x < x + width && e.y > y && e.y < y + height) {
+      dom.classList.add('dragged-panel')
+    }
   }
 
   dom.ondragover = (e) => { e.preventDefault() }
 
   // 拖拽的按钮移出panel
-  dom.ondragleave = (e) => {
+  dom.ondragleave = (e: DragEvent) => {
+    const {x, y, width, height} = dom.getBoundingClientRect()
     // 移出panel上的样式、动画
-    dom.classList.remove('dragged-panel')
+    // 如果是拖拽到了另一个按钮上，要判断是不是同一个面板里的
+    if (e.x < x || e.x > x + width || e.y < y || e.y > y + height * 2 / 3) {
+      dom.classList.remove('dragged-panel')
+    }
   }
 
   // 音声按钮拖拽落入panel
-  dom.ondrop = (e) => {
+  dom.ondrop = () => {
     // 移出panel上的样式、动画
     dom.classList.remove('dragged-panel')
 
@@ -30,7 +37,6 @@ export function useDragVoicePanel(el: Ref<HTMLElement>, panelId: string, panelDr
         if (clfy.voice[index].id === voiceStore.draggingVoiceId && clfy.clfy.id !== panelId) {
           Object.assign(dragVoice ,clfy.voice[index])
           dragVoice.oldClfyId = clfy.clfy.id
-          // if (clfy.clfy.id !== panelId)
           clfy.voice.splice(index, 1)
         }
       }
@@ -39,13 +45,16 @@ export function useDragVoicePanel(el: Ref<HTMLElement>, panelId: string, panelDr
 
     // 插入新的音声到拖拽的位置
     for (const clfy of voiceStore.allVoice!) {
-      if (clfy.clfy.id === panelId && dragVoice.oldClfyId !== panelId) {
+      if (Object.keys(dragVoice).length !== 0 && clfy.clfy.id === panelId && dragVoice.oldClfyId !== panelId) {
         clfy.voice.push(dragVoice)
       }
     }
 
     // 回调
     panelDropFinish(panelId, dragVoice.id)
+
+    // 清空draggin元素
+    voiceStore.clearDragging()
   }
 
 }

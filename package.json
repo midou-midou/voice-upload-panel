@@ -1,11 +1,12 @@
 {
-  "name": "xysbtn-upload-dashboard",
+  "name": "voice-xuyanshe-upload",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "type-check": "vue-tsc",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {

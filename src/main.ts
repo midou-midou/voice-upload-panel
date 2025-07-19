@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { router } from "./route"
+import './assets/font.scss'
 import './assets/style.scss'
 import './assets/var.scss'
 import './assets/dragPanel.scss'
