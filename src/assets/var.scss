@@ -1,0 +1,30 @@
+:root {
+  --background-color: #e0e5ec;
+  --panel-background-color: #fff;
+  --panel-title-color: #282642;
+
+
+  --xiaoxi-color: #CD3951;
+  --xiaotao-color: #eaa0fe;
+  --xiaorou-color: #66dcd8;
+  --reine-color: #a272f4;
+  --ailurus-color: #f4af6e;
+  --yangbao-color: #696969;
+
+  --voice-btn-color: #edf1f5;
+  --btn-font-color: #e0e5ec;
+  --btn-font-color-dark: #292929;
+  // --btn-font-color: #fff;
+  --upload-btn-font-color: #292929;
+}
+
+
+@each $vup in xiaoxi, xiaotao, xiaorou, reine, ailurus {
+  .#{$vup} {
+    background-color: var(#{"--"+$vup+"-color"});
+  }
+
+  .#{$vup+"-outline"} {
+    outline-color: var(#{"--"+$vup+"-color"})
+  }
+}
