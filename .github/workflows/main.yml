@@ -27,13 +27,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: 'pnpm'
 
       # node install & build
       - name: install and build
         run: |
-          npm install
-          npm run build
+          pnpm install
+          pnpm build
         env:
           CI: false
       #Deploy
