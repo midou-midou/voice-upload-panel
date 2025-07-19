@@ -32,7 +32,7 @@ jobs:
       - name: install and build
         run: |
           npm install
-          npm build
+          npm run build
         env:
           CI: false
       #Deploy
