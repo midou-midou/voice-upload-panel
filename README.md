@@ -6,9 +6,10 @@
 
 **这个项目可以让任何人把自己喜欢的音声上传到虚研社按钮哦，这样别人就可以听你上传的音声啦！**
 
-[虚研社按钮](https://space.bilibili.com/5563350)
+## 虚研社按钮-主站
+[虚研社按钮](https://voice.xuyanshe.club)
 
-## Demo传送
+## 上传站Demo传送
 
 [点这里传送](https://upload.xuyanshe.club)
 
