@@ -4,6 +4,7 @@
     <div class="header-button-container">
       <div class="header-button font-shadow">{{ siteConfig.title }}</div>
     </div>
+    <voice-button-link />
     <!-- 小希小桃像素画部分 -->
     <div class="header-xitao-container">
 

@@ -5,6 +5,7 @@ export default {
   'siteConfig.reine.name': 'reine',
   'siteConfig.ailurus.name': 'ailurus',
   'siteConfig.title': '',
+  'siteConfig.voicebuttonlink.title': '',
   'siteConfig.footer.declare': '',
   'clfy.edit.title': '',
   'popup.upload.model.title': '',

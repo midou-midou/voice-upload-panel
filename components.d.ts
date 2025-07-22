@@ -16,5 +16,6 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SwitchVupBtn: typeof import('./src/components/Button/SwitchVupBtn/index.vue')['default']
     VoiceButton: typeof import('./src/components/Button/VoiceButton/index.vue')['default']
+    VoiceButtonLink: typeof import('./src/components/Button/VoiceButtonLink/index.vue')['default']
   }
 }

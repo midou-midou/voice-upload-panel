@@ -11,6 +11,7 @@ type siteOption = {
       color: string
     }
   },
+  voiceButtonLink: string,
   footer: {
     webSiteDeclare: string,
     beianInfo: string
@@ -47,6 +48,8 @@ const siteConfig: siteOption = {
       color: '#fdc888',
     }
   },
+
+  voiceButtonLink: 'https://voice.xuyanshe.club',
 
   footer: {
     webSiteDeclare: t('siteConfig.footer.declare'),
