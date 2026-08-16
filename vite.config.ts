@@ -60,6 +60,13 @@ export default defineConfig(({ mode }) => {
       }
     }
   }
+
+  if (mode === 'production') {
+    return {
+      ...baseConfig,
+      base: '/upload'
+    }
+  }
   return {
     ...baseConfig
   }
