@@ -3,8 +3,13 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import vue from '@vitejs/plugin-vue'
 
+const nginxRoot = '/upload/'
+
 // .vue文件中不需要手动引入vue api及vue route相关api，如果需要配置可以在下面添加
 const baseConfig = {
+  define: {
+    __APP_BASE_URL__: nginxRoot
+  },
   plugins: [
     vue(),
     AutoImport({
@@ -64,7 +69,7 @@ export default defineConfig(({ mode }) => {
   if (mode === 'production') {
     return {
       ...baseConfig,
-      base: '/upload'
+      base: nginxRoot
     }
   }
   return {

@@ -24,7 +24,8 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "auto-imports.d.ts",
-    "components.d.ts"
+    "components.d.ts",
+    "vite-env.d.ts"
   ],
   "exclude": [
     "node_modules"
